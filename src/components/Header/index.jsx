@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
 import styles from './Header.module.scss';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 
 export const Header = () => {
   return (
@@ -14,7 +14,7 @@ export const Header = () => {
             <div>BAURMUS BLOG</div>
           </Link>
           <div className={styles.buttons}>
-            {true ? (
+            {false ? (
               <>
                 <Link to="/add-post">
                   <Button variant='contained'>Написать статью</Button>
@@ -25,7 +25,12 @@ export const Header = () => {
               </>
             ) : (
               <>
-              
+                <Link to="/login">
+                  <Button variant='outlined'>Войти</Button>
+                </Link>
+                <Link to="/register">
+                  <Button variant="contained">Создать аккаунт</Button>
+                </Link>
               </>
             )}
           </div>
