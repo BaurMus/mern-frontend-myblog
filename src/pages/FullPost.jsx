@@ -3,6 +3,10 @@ import { CommentsBlock, Post, AddComment } from "../components";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export const FullPost = () => {
+  if(false) {
+    return <Post isLoading={true} isFullPost />
+  }
+
   return (
     <>
       <Post 

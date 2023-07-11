@@ -3,6 +3,7 @@ import { Header } from "./components";
 import Container from "@mui/material/Container";
 import { Home, FullPost } from "./pages";
 import { Route, Routes } from "react-router-dom";
+import { AddPost } from "./pages/AddPost";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/posts/1" element={<FullPost />} />
+          <Route path="/add-post" element={<AddPost />} />
         </Routes>
       </Container>
     </>
