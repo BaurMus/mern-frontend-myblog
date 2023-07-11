@@ -48,7 +48,7 @@ export const Home = () => {
                 text: 'Я Афанасий Стрелочник, вы видели мой глаз',
               },
             ]}
-            isLoading={true}
+            isLoading={false}
           />
         </Grid>
       </Grid>

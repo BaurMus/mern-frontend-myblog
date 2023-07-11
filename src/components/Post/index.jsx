@@ -10,6 +10,7 @@ import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import styles from './Post.module.scss';
 import { UserInfo } from "../UserInfo";
 import {PostSkeleton} from "./Skeleton.jsx";
+import clsx from "clsx";
 
 export const Post = ({
   id,
@@ -30,7 +31,7 @@ export const Post = ({
   }
 
   return (
-    <div className={styles.root}>
+    <div className={clsx(styles.root, {[styles.rootFull]: isFullPost})}>
       <div className={styles.editButtons}>
         <Link to={`/posts/edit`}>
           <IconButton color="primary">
@@ -41,11 +42,13 @@ export const Post = ({
           <DeleteIcon />
         </IconButton>
       </div>
-      <img 
-        className={styles.image}
-        src={imageUrl}
-        alt={title}
-      />
+      {imageUrl && (
+        <img 
+          className={clsx(styles.image, {[styles.imageFull]: isFullPost}) }
+          src={imageUrl}
+          alt={title}
+        />
+      )}
       <div className={styles.wrapper}>
         <UserInfo {...user} additionalText={createdAt}/>
         <div className={styles.indention}>

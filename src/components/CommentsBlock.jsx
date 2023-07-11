@@ -31,6 +31,7 @@ export const CommentsBlock = ({ items, children, isLoading = true}) => {
           </React.Fragment>
         ))}
       </List>
+      {children}
     </SideBlock>
   )
 }
