@@ -84,6 +84,11 @@ $blue: #4361ee;
     font-size: 14px;
     margin-right: 20px;
     opacity: 0.5;
+
+    svg {
+      font-size: 18px;
+      margin-right: 5px;
+    }
   }
 }
 
@@ -114,4 +119,8 @@ $blue: #4361ee;
 
 .skeletonTags {
   display: flex;
+
+  span {
+    margin-right: 15px;
+  }
 }
