@@ -1,10 +1,10 @@
 import React from "react";
+import SimpleMde from "react-simplemde-editor";
 
 import { Button, Paper, TextField } from "@mui/material";
 
 import styles from './AddPost.module.scss';
 import 'easymde/dist/easymde.min.css'
-import SimpleMde from "react-simplemde-editor";
 
 export const AddPost = () => {
   return (
