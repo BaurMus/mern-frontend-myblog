@@ -1,13 +1,27 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Grid from '@mui/material/Grid';
+
 import { Post } from '../components/Post';
 import { TagsBlock } from '../components/TagsBlock';
 import { CommentsBlock } from '../components/CommentsBlock';
+import { fetchPosts, fetchTags } from '../redux/slices/posts';
 
 export const Home = () => {
+  const dispatch = useDispatch();
+  const {posts, tags} = useSelector(state => state.posts);
+
+  const isPostsLoading = posts.status === 'loading';
+  const isTagsLoading = tags.status === 'loading';
+
+  React.useEffect(() => {
+    dispatch(fetchPosts());
+    dispatch(fetchTags());
+  }, []);
+
   return (
     <>
       <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
@@ -16,21 +30,28 @@ export const Home = () => {
       </Tabs>
       <Grid container spacing={4}>
         <Grid xs={8} item>
-          <Post 
-            id={1}
-            title={'Тестовая статья'}
-            imageUrl={`https://avatarko.ru/img/kartinka/1/Crazy_Frog.jpg`}
-            user={{fullName:'Валера Тапочкин', avatarUrl:'https://avatarko.ru/img/kartinka/2/Gubka_Bob.jpg'}}
-            createdAt={new Date().toLocaleString()}
-            viewsCount={0}
-            commentsCount={3}
-            tags={['react','mongo','node']}
-            isEditable
-            isLoading={false}
-          />
+          {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => 
+            isPostsLoading ? 
+              (
+                <Post key={index} isLoading={true} />
+              ) : (
+                <Post 
+                  id={obj._id}
+                  title={obj.title}
+                  imageUrl={obj.imageUrl ? `` : ''}
+                  user={obj.user}
+                  createdAt={obj.createdAt}
+                  viewsCount={obj.viewsCount}
+                  commentsCount={3}
+                  tags={obj.tags}
+                  isEditable
+                />
+              )
+          )}
+          
         </Grid>
         <Grid xs={4} item>
-          <TagsBlock items={["react", "node", "mongo"]} isLoading={false} />
+          <TagsBlock items={tags.items} isLoading={isTagsLoading} />
           <CommentsBlock 
             items={[
               {
