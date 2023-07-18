@@ -32,16 +32,18 @@ export const Post = ({
 
   return (
     <div className={clsx(styles.root, {[styles.rootFull]: isFullPost})}>
-      <div className={styles.editButtons}>
-        <Link to={`/posts/edit`}>
-          <IconButton color="primary">
-            <EditIcon />
+      {isEditable && (
+        <div className={styles.editButtons}>
+          <Link to={`/posts/edit`}>
+            <IconButton color="primary">
+              <EditIcon />
+            </IconButton>
+          </Link>
+          <IconButton color="secondary">
+            <DeleteIcon />
           </IconButton>
-        </Link>
-        <IconButton color="secondary">
-          <DeleteIcon />
-        </IconButton>
-      </div>
+        </div>
+      )}
       {imageUrl && (
         <img 
           className={clsx(styles.image, {[styles.imageFull]: isFullPost}) }
