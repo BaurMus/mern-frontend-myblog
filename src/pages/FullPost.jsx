@@ -10,7 +10,7 @@ export const FullPost = () => {
   const {id} = useParams();
 
   React.useEffect(() => {
-    axios.get(`/posts/${id}`).then(res => {
+    axios.get(`posts/${id}`).then(res => {
       setData(res.data);
       setIsLoading(false);
     }).catch(err => {
@@ -28,7 +28,7 @@ export const FullPost = () => {
       <Post 
         id={data._id}
         title={data.title}
-        imageUrl={data.imageUrl ? `http://localhost:4444/${data.imageUrl}` : ''}
+        imageUrl={data.imageUrl ? `http://localhost:4444${data.imageUrl}` : ''}
         user={data.user}
         createdAt={data.createdAt}
         viewsCount={data.viewsCount}
