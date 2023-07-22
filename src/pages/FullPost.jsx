@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { CommentsBlock, Post, AddComment } from "../components";
 import axios from "../axios";
+import { formatTime } from "../utils";
 
 export const FullPost = () => {
   const [data, setData] = useState();
@@ -30,7 +31,7 @@ export const FullPost = () => {
         title={data.title}
         imageUrl={data.imageUrl ? `${process.env.REACT_APP_API_URL}${data.imageUrl}` : ''}
         user={data.user}
-        createdAt={data.createdAt}
+        createdAt={formatTime(data.createdAt)}
         viewsCount={data.viewsCount}
         commentsCount={3}
         tags={data.tags}
