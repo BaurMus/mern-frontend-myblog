@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Tab from '@mui/material/Tab';
@@ -8,27 +8,36 @@ import Grid from '@mui/material/Grid';
 import { Post } from '../components/Post';
 import { TagsBlock } from '../components/TagsBlock';
 import { CommentsBlock } from '../components/CommentsBlock';
-import { fetchPosts, fetchTags } from '../redux/slices/posts';
+import { fetchPopularPosts, fetchPosts, fetchTags } from '../redux/slices/posts';
 import { formatTime } from '../utils';
 
 export const Home = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.data);
   const {posts, tags} = useSelector(state => state.posts);
+  const [valueTab, setValueTab] = useState('one');
 
   const isPostsLoading = posts.status === 'loading';
   const isTagsLoading = tags.status === 'loading';
 
+  const handleChangeTab = (event, newValue) => {
+    setValueTab(newValue);
+  };
+
   React.useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch(fetchTags());
-  }, []);
+      if (valueTab === 'one') {
+        dispatch(fetchPosts());
+      } else if (valueTab === 'two') {
+        dispatch(fetchPopularPosts());
+      }  
+      dispatch(fetchTags());
+  }, [valueTab]);
 
   return (
     <>
-      <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
-        <Tab label="Новые" />
-        <Tab label="Популярные" />
+      <Tabs style={{ marginBottom: 15 }} onChange={handleChangeTab} value={valueTab} aria-label="basic tabs example">
+        <Tab value="one" label="Новые" />
+        <Tab value="two" label="Популярные" />
       </Tabs>
       <Grid container spacing={4}>
         <Grid xs={8} item>
