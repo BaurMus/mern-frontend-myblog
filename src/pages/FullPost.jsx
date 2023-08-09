@@ -40,22 +40,7 @@ export const FullPost = () => {
         <ReactMarkdown children={data.text}/>
       </Post>
       <CommentsBlock 
-        items={[
-          {
-            user: {
-              fullName: 'Валера Тапочкин',
-              avatarUrl: "https://messenge.ru/wp-content/cache/thumb/d2/d050ece6dd983d2_730x440.jpg"
-            },
-            text: 'Я Валера Тапочкин, это мой первый комментарий',
-          },
-          {
-            user: {
-              fullName: 'Афанасий Стрелочник',
-              avatarUrl: 'https://bipbap.ru/wp-content/uploads/2022/11/innocence-en-danger-emoticon-wink-8350944a80bcacb6b76082b877cca174-730x586-1.jpeg'
-            },
-            text: 'Я Афанасий Стрелочник, вы видели мой глаз',
-          },
-        ]}
+        items={data.comments}
         isLoading={false}
       >
         <AddComment />
