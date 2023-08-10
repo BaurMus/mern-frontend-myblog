@@ -1,10 +1,15 @@
 import React from "react";
 import styles from './UserInfo.module.scss';
+import { Avatar } from "@mui/material";
 
 export const UserInfo = ({ avatarUrl, fullName, additionalText }) => {
   return (
     <div className={styles.root}>
-      <img className={styles.avatar} src={'https://bipbap.ru/wp-content/uploads/2022/11/innocence-en-danger-emoticon-wink-8350944a80bcacb6b76082b877cca174-730x586-1.jpeg'} alt={fullName}/>
+      {/* {avatarUrl 
+        ? <img className={styles.avatar} src={avatarUrl} alt={fullName}/> 
+        : <Avatar className={styles.noAvatar}>B</Avatar>
+      } */}
+      <Avatar alt={fullName} src={avatarUrl} sx={{width:30,height:30,marginRight:1}}/>
       <div className={styles.userDetails}>
         <span className={styles.userName}>{fullName}</span>
         <span className={styles.additional}>{additionalText}</span>
