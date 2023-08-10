@@ -101,17 +101,23 @@ export const Registration = () => {
           fullWidth
         />
         <Button 
-          style={{marginBottom: "15px"}} 
+          className={styles.button}
           onClick={() => inputFileRef.current.click()} 
           variant="outlined" 
           size="large"
+          disabled={avatarUrl}
         >
           Загрузить аватар
         </Button>
         <input ref={inputFileRef} type="file" onChange={handleChangeFile} hidden />
         {avatarUrl && (
           <>
-            <Button variant='contained' color="error" onClick={onClickRemoveImage}>
+            <Button 
+              className={styles.button} 
+              variant='contained' 
+              color="error" 
+              onClick={onClickRemoveImage} 
+            >
               Удалить
             </Button>
             <img className={styles.image} src={`${avatarUrl}`} alt='Uploaded' />
