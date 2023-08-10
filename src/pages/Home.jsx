@@ -28,7 +28,7 @@ export const Home = () => {
       if (valueTab === 'one') {
         dispatch(fetchPosts());
       } else if (valueTab === 'two') {
-        dispatch(fetchPopularPosts());
+        dispatch(fetchPopularPosts());  
       }  
       dispatch(fetchTags());
   }, [valueTab]);
