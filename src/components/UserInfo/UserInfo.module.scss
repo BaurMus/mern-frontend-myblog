@@ -8,6 +8,19 @@
   flex-direction: column;
 }
 
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-right: 10px;
+}
+
+.noAvatar {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
 .userName {
   font-weight: 500;
   font-size: 14px;
