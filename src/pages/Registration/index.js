@@ -101,7 +101,7 @@ export const Registration = () => {
           fullWidth
         />
         <Button 
-          className={styles.button}
+          style={{marginBottom:"15px",marginRight:"2px"}}
           onClick={() => inputFileRef.current.click()} 
           variant="outlined" 
           size="large"
@@ -113,7 +113,7 @@ export const Registration = () => {
         {avatarUrl && (
           <>
             <Button 
-              className={styles.button} 
+              style={{marginBottom:"15px",marginRight:"2px"}}
               variant='contained' 
               color="error" 
               onClick={onClickRemoveImage} 
