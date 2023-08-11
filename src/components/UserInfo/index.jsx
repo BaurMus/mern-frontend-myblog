@@ -9,7 +9,6 @@ export const UserInfo = ({ avatarUrl, fullName, additionalText }) => {
         ? <img className={styles.avatar} src={avatarUrl} alt={fullName}/> 
         : <Avatar 
               alt={fullName} 
-              className={styles.noAvatar} 
               sx={{width: 30,height: 30,marginRight:1.3}}
           >{fullName[0]}</Avatar>
       }
