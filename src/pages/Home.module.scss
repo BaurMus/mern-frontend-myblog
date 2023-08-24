@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+}
+
+.posts {
+  flex: 1;
+}
+
+.tags {
+  flex: 1;
+}
+
+@media screen and (max-width: 650px) {
+  .root {
+    flex-direction: column !important;
+  }
+
+  .posts {
+    min-width: 600px;
+  }
+
+  .tags {
+    padding-top: 0 !important;
+    min-width: 600px;
+  }
+}

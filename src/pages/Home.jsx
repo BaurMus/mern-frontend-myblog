@@ -10,6 +10,7 @@ import { TagsBlock } from '../components/TagsBlock';
 import { CommentsBlock } from '../components/CommentsBlock';
 import { fetchPopularPosts, fetchPosts, fetchTags } from '../redux/slices/posts';
 import { formatTime } from '../utils';
+import styles from './Home.module.scss';
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -39,8 +40,8 @@ export const Home = () => {
         <Tab value="one" label="Новые" />
         <Tab value="two" label="Популярные" />
       </Tabs>
-      <Grid container spacing={4}>
-        <Grid xs={8} item>
+      <Grid container spacing={4} className={styles.root}>
+        <Grid xs={8} className={styles.posts} item>
           {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => 
             isPostsLoading ? 
               (
@@ -61,7 +62,7 @@ export const Home = () => {
           )}
           
         </Grid>
-        <Grid xs={4} item>
+        <Grid xs={4} className={styles.tags} item>
           <TagsBlock items={tags.items} isLoading={isTagsLoading} />
           <CommentsBlock 
             items={[
